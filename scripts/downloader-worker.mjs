@@ -7,7 +7,8 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
-const PORT = Number(process.env.PORT || 3001);
+const PORT = Number(process.env.PORT || 10000);
+const HOST = "0.0.0.0";
 
 function detectPlatform(url) {
   try {
@@ -94,6 +95,13 @@ async function downloadMedia(url) {
 }
 
 const server = http.createServer(async (req, res) => {
+  if (req.method === "GET") {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ status: "ok", service: "downloader-worker" }));
+    return;
+  }
+
   if (req.method !== "POST") {
     res.statusCode = 405;
     res.setHeader("Content-Type", "application/json");
@@ -142,6 +150,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Downloader worker listening on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Downloader worker listening on ${HOST}:${PORT}`);
 });

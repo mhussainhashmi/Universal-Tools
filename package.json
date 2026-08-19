@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "worker:start": "node scripts/downloader-worker.mjs",
     "lint": "eslint"
   },
   "dependencies": {
