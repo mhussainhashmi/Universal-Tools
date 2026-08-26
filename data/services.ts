@@ -21,4 +21,12 @@ export const services: Service[] = [
     route: "/downloader",
     enabled: true,
   },
+
+  {
+    id: "image-size-reducer",
+    title: "Image Size Reducer",
+    description: "Reduce image file sizes while preserving the original format.",
+    route: "/image-size-reducer",
+    enabled: true,
+  },
 ];
