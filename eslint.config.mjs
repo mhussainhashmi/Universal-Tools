@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Ignore third-party and bundled assets that are not source code.
+    "node_modules/**",
+    "public/**",
   ]),
 ]);
 

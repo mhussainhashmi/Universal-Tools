@@ -29,4 +29,12 @@ export const services: Service[] = [
     route: "/image-size-reducer",
     enabled: true,
   },
+
+  {
+  id: "document-qa",
+  title: "AI Document Q&A",
+  description: "Ask questions about your PDF and text documents.",
+  route: "/document-qa",
+  enabled: true,
+  },
 ];
